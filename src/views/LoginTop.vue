@@ -3,10 +3,10 @@
     <HeaderAuth />
     <div class="left-padding">
       <div class="flex icon-field">
-        <button>ログイン</button>
+        <button>マイページ</button>
       </div>
       <div class="flex icon-field">
-        <button>新規会員登録</button>
+        <button>ログアウト</button>
       </div>
     </div>
     <div class="search">
