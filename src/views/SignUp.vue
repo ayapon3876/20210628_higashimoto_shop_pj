@@ -4,9 +4,9 @@
     <div class="card">
       <p>Registration</p>
       <div class="form">
-        <input placeholder="Username" type="text" />
-        <input placeholder="Email" type="email" />
-        <input placeholder="password" type="password" />
+        <input placeholder="Username" type="text" v-model="name" />
+        <input placeholder="Email" type="email" v-model="email" />
+        <input placeholder="password" type="password" v-model="password" />
         <button @click="auth">登録</button>
       </div>
     </div>
@@ -15,9 +15,34 @@
 
 <script>
 import HeaderAuth from "../components/HeaderAuth";
+import axios from "axios";
 export default {
+  data() {
+    return {
+      name: "",
+      email: "",
+      password: "",
+    };
+  },
   components: {
     HeaderAuth
+  },
+  methods: {
+    auth() {
+      axios
+        .post("https://git.heroku.com/calm-everglades-60962.git/api/register", {
+          name: this.name,
+          email: this.email,
+          password: this.password
+        })
+        .then(response => {
+          console.log(response);
+          this.$router.replace("/");
+        })
+        .catch(error => {
+          alert(error);
+        });
+    }
   }
 };
 </script>
